@@ -1,4 +1,3 @@
-from time import sleep
 from string_utils import StringUtils
 from selenium.webdriver.common.by import By
 
