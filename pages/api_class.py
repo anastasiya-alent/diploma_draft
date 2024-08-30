@@ -1,4 +1,5 @@
 import requests
+import allure
 
 class apiClass:
 
@@ -9,14 +10,18 @@ class apiClass:
 
     def get_token(self):
         auth_headers = {
-            'authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL3VzZXItcmlnaHQiLCJzdWIiOjIxMDIwMTA4LCJpYXQiOjE3MjQ3MDAxMTQsImV4cCI6MTcyNDcwMzcxNCwidHlwZSI6MjB9.RPp1-zYq-9J_sFlhZZ2joDmpOPcaMaU0alffxspW9g8'
+            'authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL3VzZXItcmlnaHQiLCJzdWIiOjIxMDIwMTA4LCJpYXQiOjE3MjUwMTcwMzQsImV4cCI6MTcyNTAyMDYzNCwidHlwZSI6MjB9.NyLS20IOA0ByoawLbcgObGLwE4uuIg6MiRlvHYNaZDA'
         }
         return auth_headers
     
     def get(self, request_url, auth_headers):
-        response = requests.get(self.url + request_url, headers=auth_headers)
-        return response
+
+        with allure.step ("GET запросы"):
+            response = requests.get(self.url + request_url, headers=auth_headers)
+            return response
     
     def post(self, request_url, auth_headers):
-        response = requests.post(self.url + request_url, headers=auth_headers)
-        return response
+
+        with allure.step ("POST запросы"):
+            response = requests.post(self.url + request_url, headers=auth_headers)
+            return response
